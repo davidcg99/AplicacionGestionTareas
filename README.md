@@ -1,2 +1,15 @@
-# AplicacionGestionTareas
-aplicación para gestionar tareas personales. La aplicación debe permitir a los usuarios realizar las siguientes acciones: 1. Crear una nueva tarea. 2. Ver todas las tareas existentes. 3. Actualizar el estado de una tarea (completada/no completada). 4. Eliminar una tarea.
+# Aplicación Task
+Esta es una aplicación hecha con Node.js que conecta a una base datos Mysql, el archivo .env lo enviaré por correo
+## Requisitos
+
+- Node.js (versión recomendada: >= 22.12.0)
+- npm (viene con Node.js)
+
+## Instalación
+
+Para instalar las dependencias, ejecuta:
+npm install
+
+Para ejecutar aplicacion ejecuta:
+npm run start
+

@@ -1,0 +1,85 @@
+ <button class="logout-btn" id="logoutButton">
+    <i class="fas fa-sign-out-alt"></i>
+  </button>
+
+<header>
+    <h1><i class="fas fa-tasks"></i> Gestor de Tareas</h1>
+    <p><%= user %> Organiza tus actividades de manera eficiente</p>
+</header>
+
+<!-- Modal para agregar tareas -->
+<div id="taskModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-plus-circle"></i> Agregar Nueva Tarea</h2>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div id="alertContainer"></div>
+        <form id="taskForm">
+            <div class="form-group">
+                <label for="taskTitle"><i class="fas fa-heading"></i> Título de la Tarea*</label>
+                <input type="text" id="taskTitle" required placeholder="Escribe el título de la tarea">
+            </div>
+            <div class="form-group">
+                <label for="taskDescription"><i class="fas fa-align-left"></i> Descripción (Opcional)</label>
+                <textarea id="taskDescription" placeholder="Añade una descripción para tu tarea"></textarea>
+            </div>
+            <div class="form-group" style="display: flex; gap: 10px;">
+                <button type="submit" class="btn-success btn-block">
+                    <i class="fas fa-save"></i> Guardar Tarea
+                </button>
+                <button id="btnCancelAddTask" type="button" class="btn-secondary btn-block modal-close">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="filter-container">
+        <div class="filter-controls">
+            <select id="filterTasks">
+                <option value="all">Todas las tareas</option>
+                <option value="completed">Completadas</option>
+                <option value="pending">Pendientes</option>
+            </select>
+            <button id="addTaskBtn" class="add-task-btn">
+                <i class="fas fa-plus"></i> Agregar Tarea
+            </button>
+        </div>
+
+        <div class="task-count">
+            <i class="fas fa-clipboard-list"></i> Tareas: <span id="taskCounter">0</span>
+        </div>
+
+    </div>
+
+    <div id="taskTableContainer">
+        <div id="containerTableData" class="table-container">
+            <table id="taskTable">
+                <thead>
+                    <tr>
+                        <th class="col-check"><i class="fas fa-check-circle"></i> Estado</th>
+                        <th class="col-title"><i class="fas fa-heading"></i> Título</th>
+                        <th class="col-desc"><i class="fas fa-align-left"></i> Descripción</th>
+                        <th class="col-date"><i class="fas fa-calendar-alt"></i> Fecha registro</th>
+                        <th class="col-date"><i class="fas fa-calendar-alt"></i>Ultima Actualizacion </th>
+                        <th class="col-actions"><i class="fas fa-cogs"></i> Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="taskList">
+                    <!-- Las tareas se cargarán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+        <div id="emptyState" class="empty-state">
+            <i class="fas fa-clipboard"></i>
+            <h3>No hay tareas para mostrar</h3>
+            <p>Agrega una nueva tarea para comenzar</p>
+        </div>
+        <div id="pagination" class="pagination hidden">
+            <!-- Los botones de paginación se generarán aquí -->
+        </div>
+    </div>
+</div>
