@@ -174,9 +174,7 @@ button {
 
 }
 
-button:hover {
-    background-color: var(--primary-dark);
-}
+
 
 .btn-lg {
     padding: 12px 20px;
