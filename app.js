@@ -38,8 +38,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-//app.use(helmet());
-
 app.use(cors({
   origin: '*', // Cambia '*' a tu dominio específico para mayor seguridad
   methods: ['GET', 'POST', 'PUT', 'DELETE'],

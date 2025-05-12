@@ -19,7 +19,7 @@ class ChatModel {
     userId = null,
     message,
     messageType = 'text',
-    moduleActive
+    moduleActive,
   }) {
     const sql = `CALL sp_ChatOperations(?, ?, ?, ?, ?, ?, ?)`;
     const params = [
@@ -29,7 +29,7 @@ class ChatModel {
       userId,       // ID de usuario
       message,      // Contenido del mensaje
       messageType,  // Tipo de mensaje
-      moduleActive  // Modulo activo para consultas de chat independiente  
+      moduleActive,  // Modulo activo para consultas de chat independiente  
     ];
 
     try {
@@ -57,13 +57,13 @@ class ChatModel {
    * @returns {Promise<{success: boolean, data: Array<Object>, message: string}>}
    * @throws {Error} - Error de base de datos
    */
-  static async getChatMessages(chatGuid, moduleActive) {
+  static async getChatMessages(chatGuid, moduleActive, userId) {
     const sql = `CALL sp_ChatOperations(?, ?, ?, ?, ?, ?, ?)`;
     const params = [
       2,              // Tipo de operación (1 = insertar mensaje)
       chatGuid,       // GUID del chat
       null,           // Tipo de remitente
-      1,              // ID de usuario
+      userId,         // ID de usuario
       null,           // Contenido del mensaje
       null,           // Tipo de mensaje
       moduleActive    // Modulo activo para consultas de chat independiente 

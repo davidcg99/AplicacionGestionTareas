@@ -40,6 +40,7 @@ class AuthController {
           user_name: user.user_name,
           user_login: user.user_login,
           rol: user.role_name,
+
         },
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_EXPIRES } // Valor configurado en .env (ej: '1h', '2d')
@@ -51,6 +52,7 @@ class AuthController {
         user_login: user.user_login,
         rol: user.role_name,
         token,
+        user_id :user.user_id
       };
 
       let configCookie = {

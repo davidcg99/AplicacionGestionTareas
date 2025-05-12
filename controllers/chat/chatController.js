@@ -14,6 +14,8 @@ const generateConversationChatbot = async (req, res) => {
   try {
     const { message, guid, moduleActive } = req.body;
 
+    let userId = req.session.user.user_id;
+   
     // Validación de campos requeridos
     if (!message || !guid) {
       throw new ValidationError('El mensaje y el GUID son requeridos', 400);
@@ -23,7 +25,7 @@ const generateConversationChatbot = async (req, res) => {
     const userChatMessage = {
       chatGuid: guid,       // Identificador único de la conversación
       sender: 'user',       // Indica que el remitente es el usuario
-      userId: 1,            // TODO: Reemplazar con ID real de autenticación
+      userId:  userId, // TODO: Reemplazar con ID real de autenticación
       message: message,     // Contenido del mensaje
       typeMessage: 'text',   // Tipo de mensaje (texto)
       moduleActive: moduleActive
@@ -120,9 +122,10 @@ const getConversationHistoryById = async (req, res) => {
   try {
 
     const { moduleActive } = req.query; 
-    const { id,  } = req.params;   
+    const { id  } = req.params;   
+    const idUser =  req.session.user.user_id;
       // Insertar mensaje del usuario en la base de datos
-      const resultChat = await chatModel.getChatMessages(id,moduleActive);
+      const resultChat = await chatModel.getChatMessages(id,moduleActive, idUser);
  
     // Validar que exista la conversación
     if (!resultChat) {
