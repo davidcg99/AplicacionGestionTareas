@@ -50,13 +50,16 @@ const utils = {
     // Formatea una fecha a un string legible
     formatDate: (dateString) => {
         const date = new Date(dateString);
-        return date.toLocaleDateString('es-ES', {
+    
+        return new Intl.DateTimeFormat('es-ES', {
+            timeZone: 'America/Mexico_City',
             day: '2-digit',
             month: '2-digit',
             year: 'numeric',
             hour: '2-digit',
-            minute: '2-digit'
-        }).replace(',', ' ');
+            minute: '2-digit',
+            hour12: false // opcional: formato 24h
+        }).format(date).replace(',', ' ');
     },
 
     // Muestra una alerta temporal
